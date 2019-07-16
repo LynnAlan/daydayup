@@ -25,7 +25,6 @@ function debounce1(fn,wait){
 
 
 // 节流,规定时间内，无论事件被触发多少次，永远只会执行一次
-
 // 使用定时器做标记
 function throttle(fn,wait){
   let timer = null;
