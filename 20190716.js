@@ -1,5 +1,6 @@
 // leetcode 
-// 两数之和
+
+//01 两数之和
 /**
  * 给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。
 
@@ -18,9 +19,9 @@ var nums = [2, 7, 11, 15],target = 9
 
 //方法一 双层for 循环
 function twoSum(nums,target){
-  for(let i = 0 ; i < nums.length; i++){
-    for(let j = 1; j < nums.length; j++){
-      if(nums[j] === target - nums[i]){
+  for(let i = 0 ; i < nums.length; i++) {
+    for(let j = 1; j < nums.length; j++) {
+      if(nums[j] === target - nums[i]) {
         return [i,j]
       }
     }
@@ -30,11 +31,41 @@ function twoSum(nums,target){
 //方法二 使用es6的 map属性
 function twoSum(nums,target){
   let map = new Map()
-  for(let i = 0 ; i < nums.length ; i++){
-    if(map.has(nums[i])){
-      return [map.get(nums[i]),i]
-    }else{
+  for(let i = 0 ; i < nums.length ; i++) {
+    if(!map.has(nums[i])) {
       map.set(target - nums[i],i)
+    } else {
+      return [map.get(nums[i]),i]
     }
   }
+}
+
+/**
+ * 02 整数反转
+ * 给出一个 32 位的有符号整数，你需要将这个整数中每位上的数字进行反转。
+
+  示例 1:
+
+  输入: 123
+  输出: 321
+  示例 2:
+
+  输入: -123
+  输出: -321
+  示例 3:
+
+  输入: 120
+  输出: 21
+  注意:
+
+  假设我们的环境只能存储得下 32 位的有符号整数，则其数值范围为 [−231,  231 − 1]。请根据这个假设，如果反转后整数溢出那么就返回 0。
+ *  */
+function reverse(num){
+  let numToArr = String(Math.abs(num)).split('');
+  let reslut = '';
+  for(const i = 0 ; i < numToArr.length;){
+    reslut += numToArr.pop()
+  }
+  reslut = num > 0 ?  Number(reslut) : -Number(reslut) 
+  return reslut
 }
